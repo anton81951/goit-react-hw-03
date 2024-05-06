@@ -1,13 +1,24 @@
+import { Formik, Form, Field } from "formik";
 import clsx from "clsx";
-import styles from "./Description.module.css";
+import styles from "./SearchBox.module.css";
 
-export default function  Description () {
-    return (
-        <>
-        <h1 className={clsx(styles.titleCafe)}>Sip Happens Café
-        </h1>
-        <p className={clsx(styles.descCafe)}>Please leave your feedback about our service by selecting one of the options below.
-        </p>
-        </>
-    )
-}
+const SearchBox = ({ value, onChange }) => {
+  return (
+    <Formik initialValues={{ search: value }} onSubmit={() => {}}>
+      <Form className={styles.searchBox}>
+        <label htmlFor="search">Find contacts by name</label>
+        <Field
+          className={styles.searchField}
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Enter name"
+          value={value}
+          onChange={onChange}
+        />
+      </Form>
+    </Formik>
+  );
+};
+
+export default SearchBox;

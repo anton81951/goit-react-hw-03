@@ -1,9 +1,17 @@
-.titleCafe {
-    margin: 20px 0 20px 20px;
-
+.searchBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 50px;
+    max-width: 500px;
+    font-size: 20px;
 }
 
-.descCafe {
-    margin: 20px 0 20px 20px;
-    font-size: 20px;
+.formBtn {
+    border: 1px solid black;
+}
+
+.searchField {
+    border-radius: 2px;
+    
 }

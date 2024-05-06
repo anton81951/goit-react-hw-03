@@ -2,22 +2,23 @@ import clsx from "clsx";
 import styles from "./Contact.module.css";
 import { HiUser, HiPhone } from "react-icons/hi";
 
-const Contact = ({ contact: {name, number } }) => {
-  
-  return(
-    <li  className={clsx(styles.contactContainer)}>
-      <div>
+const Contact = ({ contact: { name, number } }) => {
+  return (
+    <div className={clsx(styles.contactContainer)}>
+      <address>
         <div className={clsx(styles.nameBox)}>
           <HiUser />
-          <p className={clsx(styles.nameSize)}>{name}</p>
+          <span className={clsx(styles.nameSize)}>{name}</span>
         </div>
         <div className={clsx(styles.nameBox)}>
           <HiPhone />
-          <p className={clsx(styles.nameSize)}>{number}</p>
+          <span className={clsx(styles.nameSize)}>{number}</span>
         </div>
-      </div>
-      <button className={clsx(styles.buttonFrame)}>Delete</button>
-    </li>
+      </address>
+      <form>
+        <button type="button" className={clsx(styles.buttonFrame)}>Delete</button>
+      </form>
+    </div>
   );
 };
 
