@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import styles from "./App.module.css";
 import contactData from "../contactListSrc.json";
@@ -8,7 +8,11 @@ import SearchBox from "./SearchBox/SearchBox";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [contacts, setContacts] = useState(contactData);
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    setContacts(contactData);
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);

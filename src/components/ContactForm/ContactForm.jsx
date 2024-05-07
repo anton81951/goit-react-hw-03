@@ -1,40 +1,41 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { nanoid } from "nanoid";
 import styles from "./ContactForm.module.css";
 
 const ContactSchema = Yup.object().shape({
-  contactname: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required!"),
-  number: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required"),
+  name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
+  number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 });
 
 const ContactForm = ({ addNewContact }) => {
   const handleSubmit = (values, actions) => {
     const newContact = {
-      id: Date.now(), // Generate unique ID for the new contact
-      name: values.contactname,
+      id: nanoid(), 
+      name: values.name,
       number: values.number
     };
-    addNewContact(newContact); // Pass the new contact to the parent component
+    addNewContact(newContact);
     actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={{ contactname: "", number: "" }}
+      initialValues={{ name: "", number: "" }}
       onSubmit={handleSubmit}
       validationSchema={ContactSchema}
     >
       {({ handleSubmit }) => (
         <Form className={styles.inputForm} onSubmit={handleSubmit}>
           <div className={styles.inputSection}>
-            <label htmlFor="contactname">Name</label>
-            <Field className={styles.inputField} type="text" name="contactname" id="contactname" />
-            <ErrorMessage name="contactname" component="span" />
+            <label htmlFor="name">Name</label>
+            <Field className={styles.inputField} type="text" name="name" id="name" />
+            <ErrorMessage name="name" component="span" className={styles.errorMsg} />
           </div>
           <div className={styles.inputSection}>
             <label htmlFor="number">Number</label>
             <Field className={styles.inputField} type="text" name="number" id="number" />
-            <ErrorMessage name="number" component="span" />
+            <ErrorMessage name="number" component="span" className={styles.errorMsg} />
           </div>
           <button className={styles.inputBtn} type="submit">Add contact</button>
         </Form>
