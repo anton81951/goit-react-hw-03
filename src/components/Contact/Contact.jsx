@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./Contact.module.css";
 import { HiUser, HiPhone } from "react-icons/hi";
 
-const Contact = ({ contact: { name, number } }) => {
+const Contact = ({ contact: { name, number, id }, onDelete }) => {
   return (
     <div className={clsx(styles.contactContainer)}>
       <address>
@@ -16,7 +16,7 @@ const Contact = ({ contact: { name, number } }) => {
         </div>
       </address>
       <form>
-        <button type="button" className={clsx(styles.buttonFrame)}>Delete</button>
+        <button type="button" className={clsx(styles.buttonFrame)} onClick={()=>onDelete(id)}>Delete</button>
       </form>
     </div>
   );

@@ -25,8 +25,7 @@ const ContactForm = ({ addNewContact }) => {
       onSubmit={handleSubmit}
       validationSchema={ContactSchema}
     >
-      {({ handleSubmit }) => (
-        <Form className={styles.inputForm} onSubmit={handleSubmit}>
+        <Form className={styles.inputForm}>
           <div className={styles.inputSection}>
             <label htmlFor="name">Name</label>
             <Field className={styles.inputField} type="text" name="name" id="name" />
@@ -39,7 +38,6 @@ const ContactForm = ({ addNewContact }) => {
           </div>
           <button className={styles.inputBtn} type="submit">Add contact</button>
         </Form>
-      )}
     </Formik>
   );
 };
